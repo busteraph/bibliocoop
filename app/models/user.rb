@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :livres
+  
+  def bibliotheque
+    Livre.where("user_id = ?", id )
+  end
+
 end
