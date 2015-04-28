@@ -3,10 +3,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :livres
+         
+  has_many :livres_detenus, class_name: "Livre", foreign_key: "proprietaire_id"
+  has_many :livres_pretes, class_name: "Livre", foreign_key: "emprunteur_id"
   
   def bibliotheque
-    Livre.where("user_id = ?", id )
+    Livre.where("proprietaire_id = ?", id )
+  end
+
+  def emprunts
+    Livre.where("emprunteur_id = ?", id )
   end
 
 end

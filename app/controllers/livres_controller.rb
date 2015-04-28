@@ -4,7 +4,8 @@ class LivresController < ApplicationController
   # GET /livres
   # GET /livres.json
   def index
-    @livres = current_user.bibliotheque
+    @bibliotheque = current_user.livres_detenus
+    @prets = current_user.livres_pretes
   end
 
   # GET /livres/1
@@ -24,11 +25,11 @@ class LivresController < ApplicationController
   # POST /livres
   # POST /livres.json
   def create
-    @livre = Livre.new(livre_params)
+    @livre =  current_user.livres_detenus.build(livre_params)
 
     respond_to do |format|
-      if @livre.save
-        format.html { redirect_to @livre, notice: 'Livre was successfully created.' }
+      if @livre.save!
+        format.html { redirect_to @livre, notice: 'Le livre a été créé avec succès.' }
         format.json { render :show, status: :created, location: @livre }
       else
         format.html { render :new }
@@ -41,8 +42,8 @@ class LivresController < ApplicationController
   # PATCH/PUT /livres/1.json
   def update
     respond_to do |format|
-      if @livre.update(livre_params)
-        format.html { redirect_to @livre, notice: 'Livre was successfully updated.' }
+      if @livre.update!(livre_params)
+        format.html { redirect_to @livre, notice: 'Le livre a été modifié avec succès..' }
         format.json { render :show, status: :ok, location: @livre }
       else
         format.html { render :edit }
@@ -54,9 +55,9 @@ class LivresController < ApplicationController
   # DELETE /livres/1
   # DELETE /livres/1.json
   def destroy
-    @livre.destroy
+    @livre.destroy!
     respond_to do |format|
-      format.html { redirect_to livres_url, notice: 'Livre was successfully destroyed.' }
+      format.html { redirect_to livres_url, notice: 'Le livre a été supprimé avec succès..' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class LivresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def livre_params
-      params.require(:livre).permit(:titre, :auteur, :user_id)
+      params.require(:livre).permit(:titre, :auteur)
     end
 end
