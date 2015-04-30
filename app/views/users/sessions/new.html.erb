@@ -1,14 +1,18 @@
-<h2>Se connecter</h2>
+<%#= content_tag(:div, '', class: 'col-lg-8') %>
+<%= content_tag(:div, '', class: 'col-lg-3') do %>
+<h2 class="form-signin-heading">Veuillez vous connecter</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"} ) do |f| %>
+  <%= devise_error_messages! %>
+
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :user, :email %><br />
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :user, :password %><br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -19,8 +23,9 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Connexion" %>
+    <%= f.submit "Connexion", class: "btn btn-lg btn-primary btn-block" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+<% end %>

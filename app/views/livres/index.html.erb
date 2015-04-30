@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Livres de la bibliotheque</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Titre</th>
@@ -24,6 +22,29 @@
   </tbody>
 </table>
 
-<br>
+<h1>Livres empruntés</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Auteur</th>
+      <th>Propriétaire</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bibliotheque.each do |livre| %>
+      <tr>
+        <td><%= livre.titre %></td>
+        <td><%= livre.auteur %></td>
+        <td><%= livre.proprietaire %></td>
+        <td><%= link_to 'Consulter', livre %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Ajouter un livre', new_livre_path %>

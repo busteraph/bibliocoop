@@ -1,0 +1,22 @@
+<h1>Livres de la bibliotheque</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Auteur</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bibliotheque.each do |livre| %>
+      <tr>
+        <td><%= livre.titre %></td>
+        <td><%= livre.auteur %></td>
+        <td><%= link_to 'Preter', livre %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

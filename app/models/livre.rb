@@ -4,4 +4,5 @@ class Livre < ActiveRecord::Base
 
   validates :titre, :auteur, presence: true
   
+  scope :disponible, -> { where(emprunteur_id: 'null') }
 end

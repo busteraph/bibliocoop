@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  root 'livres#index'
+  root 'livres#welcome'
 
-  resources :livres
+  resources :livres do
+    collection {get :welcome}
+    collection {get :detenus}
+    collection {get :a_preter}
+  end
 
   devise_for :users
   

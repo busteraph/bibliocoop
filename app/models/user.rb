@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :livres_detenus, class_name: "Livre", foreign_key: "proprietaire_id"
-  has_many :livres_pretes, class_name: "Livre", foreign_key: "emprunteur_id"
+  has_many :livres_empruntes, class_name: "Livre", foreign_key: "emprunteur_id"
   
   def bibliotheque
     Livre.where("proprietaire_id = ?", id )

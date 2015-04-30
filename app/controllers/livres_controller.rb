@@ -1,11 +1,13 @@
 class LivresController < ApplicationController
   before_action :set_livre, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: :welcome
+
 
   # GET /livres
   # GET /livres.json
   def index
     @bibliotheque = current_user.livres_detenus
-    @prets = current_user.livres_pretes
+    @emprunts = current_user.livres_empruntes
   end
 
   # GET /livres/1
@@ -60,6 +62,13 @@ class LivresController < ApplicationController
       format.html { redirect_to livres_url, notice: 'Le livre a été supprimé avec succès..' }
       format.json { head :no_content }
     end
+  end
+  
+  def welcome
+  end
+
+  def a_preter
+    @bibliotheque = current_user.livre.disponible
   end
 
   private

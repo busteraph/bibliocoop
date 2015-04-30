@@ -1,7 +1,7 @@
 <%= form_for(@livre) do |f| %>
   <% if @livre.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@livre.errors.count, "error") %> prohibited this livre from being saved:</h2>
+      <h2><%= pluralize(@livre.errors.count, "error") %> empechent l'enregistrement de ce livre </h2>
 
       <ul>
       <% @livre.errors.full_messages.each do |message| %>

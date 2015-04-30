@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bibliocoop</title>
+  <title>Livres échanges</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-<div id="user_nav">  
-  <% if user_signed_in? %>  
-    Connecté en tant que <%= current_user.email %>. Ce n'est pas vous?  
-    <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete  %>  
-  <% else %>  
-    <%= link_to "S'enregistrer", new_user_registration_path %> ou  
-    <%= link_to "Se connecter", new_user_session_path %>  
-  <% end %>  
-</div>  
-    
-<%= yield %>
-
+<%= render partial: 'layouts/navigation' %>
+<div class="main container">
+  <div class="row">
+    <%= content_tag :div, id: "flash" do %>
+      <%= render partial: 'layouts/messages' %>
+    <% end %>
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

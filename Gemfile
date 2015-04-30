@@ -45,6 +45,8 @@ end
 
 gem 'devise'
 gem 'devise-i18n'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :production do
   gem 'rails_12factor', '0.0.2'

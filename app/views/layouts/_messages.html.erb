@@ -1,0 +1,10 @@
+<%# encoding: UTF-8%>
+<%# Rails flash messages styled for Twitter Bootstrap 3.0 %>
+<% flash.each do |type_flash, msg| %>
+    <% if msg.is_a?(String) %>
+        <div class="alert <%= bootstrap_class_for type_flash %> fade in">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= content_tag :div, msg, :id => "flash_#{type_flash}" %>
+        </div>
+    <% end %>
+<% end %>
