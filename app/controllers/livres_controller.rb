@@ -7,7 +7,8 @@ class LivresController < ApplicationController
   # GET /livres.json
   def index
     @bibliotheque = current_user.livres_detenus
-    @emprunts = current_user.livres_empruntes
+    @disponibles = current_user.livres_detenus.disponibles
+    #@emprunts = current_user.livres_empruntes
   end
 
   # GET /livres/1
@@ -68,7 +69,7 @@ class LivresController < ApplicationController
   end
 
   def a_preter
-    @bibliotheque = current_user.livre.disponible
+    @bibliotheque = current_user.livres_detenus.disponibles
   end
 
   private

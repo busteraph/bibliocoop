@@ -22,9 +22,9 @@
   </tbody>
 </table>
 
-<h1>Livres empruntés</h1>
+<h1>Livres à préter</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Titre</th>
@@ -35,11 +35,11 @@
   </thead>
 
   <tbody>
-    <% @bibliotheque.each do |livre| %>
+    <% @disponibles.each do |livre| %>
       <tr>
         <td><%= livre.titre %></td>
         <td><%= livre.auteur %></td>
-        <td><%= livre.proprietaire %></td>
+        <td><%= livre.proprietaire.email %></td>
         <td><%= link_to 'Consulter', livre %></td>
       </tr>
     <% end %>
