@@ -1,9 +1,9 @@
-<% provide(:title, 'Accueil') %>
+<%# provide(:title, 'Accueil') %>
 <%= content_tag(:div, '', class: 'col-lg-2') %>
 
 <%= content_tag(:div, '', class: 'col-lg-8 text-center jumbotron') do %>
   <h2>Livres Échanges</h2>
-
+  <p>Créer votre bibliothèque et échanger vos livres avec les autres membres</p>
   <%= link_to "Enregistrez-vous ici…", new_user_registration_path, class: "btn btn-large btn-primary" unless user_signed_in? %>
 <% end %>
 <%= content_tag(:div, '', class: 'col-lg-2') %>

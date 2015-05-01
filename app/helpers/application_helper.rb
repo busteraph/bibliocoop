@@ -14,7 +14,7 @@ module ApplicationHelper
     end
   end
      
-    def nav_link(link_text, link_path, http_method=nil)
+  def nav_link(link_text, link_path, http_method=nil)
     class_name = current_page?(link_path) ? 'active' : ''
 
     content_tag(:li, class: class_name) do

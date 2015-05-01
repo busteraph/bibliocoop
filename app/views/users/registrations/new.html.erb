@@ -5,7 +5,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email class:"sr-only", for:"user_email" %><br />
+    <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -23,8 +23,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Enregistrement" %>
+    <%= f.submit "Enregistrement", class: "btn btn-lg btn-primary btn-block" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+<% end %>
